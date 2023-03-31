@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: 'skyapp'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '33060:3306'
+    container_name: sky-db
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    volumes:
+      - './:/opt/current'
+      - '/opt/current/app/cache'
+      - '/opt/current/app/logs'
+    restart: on-failure
+    depends_on:
+      - db
+    container_name: sky-php
+  server:
+    image: nginx:stable-alpine
+    volumes:
+      - './web/:/opt/current/web'
+      - './docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro'
+    ports:
+      - '8081:80'
+    depends_on:
+      - php
+    container_name: sky-server
