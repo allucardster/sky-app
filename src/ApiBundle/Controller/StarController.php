@@ -3,6 +3,7 @@
 namespace ApiBundle\Controller;
 
 use ApiBundle\Model\Request\CreateStarRequest;
+use ApiBundle\Model\Request\UpdateStarRequest;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
@@ -51,5 +52,26 @@ class StarController extends FOSRestController
     public function read(Star $star): Star
     {
         return $star;
+    }
+
+    /**
+     * @Rest\Patch("/{id}")
+     * @Sensio\ParamConverter("request", converter="fos_rest.request_body")
+     *
+     * @param Star $star
+     * @param UpdateStarRequest $request
+     * @param ConstraintViolationListInterface $constraintViolationList
+     * @return View
+     */
+    public function update(
+        Star $star,
+        UpdateStarRequest $request,
+        ConstraintViolationListInterface $constraintViolationList
+    ): View {
+        if ($constraintViolationList->count() > 0) {
+            return View::create($constraintViolationList, Response::HTTP_BAD_REQUEST);
+        }
+
+        return View::create($this->getStarService()->updateStar($star, $request), Response::HTTP_OK);
     }
 }

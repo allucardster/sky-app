@@ -3,8 +3,8 @@
 namespace ApiBundle\Model\Request;
 
 use SkyBundle\Model\Request\CreateStarRequestInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 use SkyBundle\Model\Element;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class CreateStarRequest implements CreateStarRequestInterface
 {
@@ -18,7 +18,7 @@ class CreateStarRequest implements CreateStarRequestInterface
      * @Assert\NotBlank
      * @var string
      */
-    public $galaxy;
+    private $galaxy;
 
     /**
      * @Assert\NotNull
