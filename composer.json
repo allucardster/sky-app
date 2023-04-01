@@ -5,6 +5,7 @@
     "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
         "psr-4": {
+            "ApiBundle\\": "src/ApiBundle",
             "AppBundle\\": "src/AppBundle",
             "SkyBundle\\": "src/SkyBundle"
         },

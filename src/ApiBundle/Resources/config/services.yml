@@ -1,0 +1,6 @@
+services:
+  api.serializer.star_normalizer:
+    class: ApiBundle\Serializer\StarNormalizer
+    autowire: true
+    tags:
+      - { name: serializer.normalizer }
