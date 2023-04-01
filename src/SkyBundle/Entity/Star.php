@@ -62,7 +62,7 @@ class Star
     private $rotationFrequency;
 
     /**
-     * @var json
+     * @var array
      *
      * @ORM\Column(name="atoms", type="json")
      */
@@ -73,7 +73,7 @@ class Star
      *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -85,7 +85,7 @@ class Star
      *
      * @return Star
      */
-    public function setName($name)
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -97,7 +97,7 @@ class Star
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -109,7 +109,7 @@ class Star
      *
      * @return Star
      */
-    public function setGalaxy($galaxy)
+    public function setGalaxy(string $galaxy): self
     {
         $this->galaxy = $galaxy;
 
@@ -121,7 +121,7 @@ class Star
      *
      * @return string
      */
-    public function getGalaxy()
+    public function getGalaxy(): string
     {
         return $this->galaxy;
     }
@@ -133,7 +133,7 @@ class Star
      *
      * @return Star
      */
-    public function setRadius($radius)
+    public function setRadius(float $radius): self
     {
         $this->radius = $radius;
 
@@ -145,7 +145,7 @@ class Star
      *
      * @return float
      */
-    public function getRadius()
+    public function getRadius(): float
     {
         return $this->radius;
     }
@@ -157,7 +157,7 @@ class Star
      *
      * @return Star
      */
-    public function setTemperature($temperature)
+    public function setTemperature(float $temperature): self
     {
         $this->temperature = $temperature;
 
@@ -169,7 +169,7 @@ class Star
      *
      * @return float
      */
-    public function getTemperature()
+    public function getTemperature(): float
     {
         return $this->temperature;
     }
@@ -181,7 +181,7 @@ class Star
      *
      * @return Star
      */
-    public function setRotationFrequency($rotationFrequency)
+    public function setRotationFrequency(float $rotationFrequency): self
     {
         $this->rotationFrequency = $rotationFrequency;
 
@@ -193,7 +193,7 @@ class Star
      *
      * @return float
      */
-    public function getRotationFrequency()
+    public function getRotationFrequency(): float
     {
         return $this->rotationFrequency;
     }
@@ -201,11 +201,11 @@ class Star
     /**
      * Set atoms
      *
-     * @param json $atoms
+     * @param array $atoms
      *
      * @return Star
      */
-    public function setAtoms($atoms)
+    public function setAtoms(array $atoms): self
     {
         $this->atoms = $atoms;
 
@@ -215,9 +215,9 @@ class Star
     /**
      * Get atoms
      *
-     * @return json
+     * @return array
      */
-    public function getAtoms()
+    public function getAtoms(): array
     {
         return $this->atoms;
     }
