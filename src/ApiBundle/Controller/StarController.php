@@ -18,9 +18,18 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
  */
 class StarController extends FOSRestController
 {
+    /**
+     * @var StarService
+     */
+    private $starService = null;
+
     private function getStarService(): StarService
     {
-        return $this->get('sky.star_service');
+        if (null === $this->starService) {
+            $this->starService = $this->get('sky.star_service');
+        }
+
+        return $this->starService;
     }
 
     /**

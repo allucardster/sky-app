@@ -43,7 +43,7 @@ class CreateStarRequest implements CreateStarRequestInterface
 
     /**
      * @Assert\NotNull
-     * @Assert\Choice(callback={Element::class, "getElementList"}, multiple=true)
+     * @Assert\Choice(callback={Element::class, "getElementList"}, multiple=true, min=1)
      * @var array
      */
     private $atoms = [];

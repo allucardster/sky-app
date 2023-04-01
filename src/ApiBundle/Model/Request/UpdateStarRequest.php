@@ -37,7 +37,7 @@ class UpdateStarRequest implements UpdateStarRequestInterface
     private $rotationFrequency = null;
 
     /**
-     * @Assert\Choice(callback={Element::class, "getElementList"}, multiple=true)
+     * @Assert\Choice(callback={Element::class, "getElementList"}, multiple=true, min=1)
      * @var array|null
      */
     private $atoms = null;
