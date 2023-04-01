@@ -27,6 +27,12 @@ RUN docker-php-ext-install zip
 # Enable opcache
 RUN docker-php-ext-enable opcache
 
+# Install pdo
+RUN docker-php-ext-install pdo
+
+# Install mysql
+RUN docker-php-ext-install pdo_mysql mysqli
+
 # Install composer
 RUN curl -sS https://getcomposer.org/installer \
   | php -- --install-dir=/usr/local/bin --filename=composer --version=2.2.9
