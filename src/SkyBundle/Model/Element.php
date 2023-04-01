@@ -125,4 +125,9 @@ final class Element
         "oganesson",
         "ununennium"
     ];
+
+    public static function getElementList(): array
+    {
+        return self::LIST;
+    }
 }

@@ -1,4 +1,9 @@
 services:
+  api.serializer.constraint_violation_normalizer:
+    class: ApiBundle\Serializer\ConstraintViolationNormalizer
+    tags:
+      - { name: serializer.normalizer }
+
   api.serializer.star_normalizer:
     class: ApiBundle\Serializer\StarNormalizer
     autowire: true

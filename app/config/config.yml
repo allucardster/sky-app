@@ -5,9 +5,11 @@ imports:
     - { resource: packages/doctrine.yml }
     - { resource: packages/fos_rest.yml }
     - { resource: packages/framework.yml }
+    - { resource: packages/sensio_framework_extra.yml }
     - { resource: packages/swiftmailer.yml }
     - { resource: packages/twig.yml }
     - { resource: "@ApiBundle/Resources/config/services.yml" }
+    - { resource: "@SkyBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration

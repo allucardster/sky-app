@@ -1,0 +1,4 @@
+services:
+  sky.star_service:
+    class: SkyBundle\Service\StarService
+    autowire: true
