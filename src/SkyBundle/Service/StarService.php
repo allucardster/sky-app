@@ -91,4 +91,10 @@ class StarService
             );
         }
     }
+
+    public function deleteStar(Star $star): void
+    {
+        $this->em->remove($star);
+        $this->em->flush();
+    }
 }

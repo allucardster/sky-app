@@ -74,4 +74,16 @@ class StarController extends FOSRestController
 
         return View::create($this->getStarService()->updateStar($star, $request), Response::HTTP_OK);
     }
+
+    /**
+     * @Rest\Delete("/{id}")
+     * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
+     *
+     * @param Star $star
+     * @return void
+     */
+    public function delete(Star $star): void
+    {
+        $this->getStarService()->deleteStar($star);
+    }
 }
