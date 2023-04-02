@@ -2,8 +2,8 @@
 
 namespace ApiBundle\Model\Request;
 
-use SkyBundle\Model\Request\CreateStarRequestInterface;
 use SkyBundle\Model\Element;
+use SkyBundle\Model\Request\CreateStarRequestInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class CreateStarRequest implements CreateStarRequestInterface
@@ -53,7 +53,7 @@ class CreateStarRequest implements CreateStarRequestInterface
         return $this->name;
     }
 
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -63,7 +63,7 @@ class CreateStarRequest implements CreateStarRequestInterface
         return $this->galaxy;
     }
 
-    public function setGalaxy($galaxy): void
+    public function setGalaxy(string $galaxy): void
     {
         $this->galaxy = $galaxy;
     }
@@ -72,7 +72,7 @@ class CreateStarRequest implements CreateStarRequestInterface
         return $this->radius;
     }
 
-    public function setRadius($radius): void
+    public function setRadius(float $radius): void
     {
         $this->radius = $radius;
     }
@@ -82,7 +82,7 @@ class CreateStarRequest implements CreateStarRequestInterface
         return $this->temperature;
     }
 
-    public function setTemperature($temperature): void
+    public function setTemperature(float $temperature): void
     {
         $this->temperature = $temperature;
     }
@@ -92,7 +92,7 @@ class CreateStarRequest implements CreateStarRequestInterface
         return $this->rotationFrequency;
     }
 
-    public function setRotationFrequency($rotationFrequency): void
+    public function setRotationFrequency(float $rotationFrequency): void
     {
         $this->rotationFrequency = $rotationFrequency;
     }
@@ -102,7 +102,7 @@ class CreateStarRequest implements CreateStarRequestInterface
         return $this->atoms;
     }
 
-    public function setAtoms($atoms): void
+    public function setAtoms(array $atoms): void
     {
         $this->atoms = $atoms;
     }
