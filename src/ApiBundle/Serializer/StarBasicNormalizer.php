@@ -2,6 +2,7 @@
 
 namespace ApiBundle\Serializer;
 
+use ApiBundle\Model\StarBasic;
 use SkyBundle\Entity\Star;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
@@ -20,12 +21,7 @@ class StarBasicNormalizer implements ViewTypeNormalizerInterface
             return $this->normalizer->normalize($object, $format, $context);
         }
 
-        return [
-            'name' => $object->getName(),
-            'radius' => $object->getRadius(),
-            'temperature' => $object->getTemperature(),
-            'volume' => ((4/3) * pi() * pow($object->getRadius(), 3)),
-        ];
+        return $this->normalizer->normalize(StarBasic::creteFrom($object), $format, $context);
     }
 
     public function supportsNormalization($data, $format = null)
