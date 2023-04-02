@@ -2,8 +2,8 @@
 
 namespace ApiBundle\Model\Request;
 
-use SkyBundle\Model\Request\UpdateStarRequestInterface;
 use SkyBundle\Model\Element;
+use SkyBundle\Model\Request\UpdateStarRequestInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class UpdateStarRequest implements UpdateStarRequestInterface

@@ -3,6 +3,7 @@
 namespace ApiBundle\Controller;
 
 use ApiBundle\Model\Request\CreateStarRequest;
+use ApiBundle\Model\Request\UniqueStarsRequest;
 use ApiBundle\Model\Request\UpdateStarRequest;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -10,6 +11,7 @@ use FOS\RestBundle\View\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration as Sensio;
 use SkyBundle\Entity\Star;
 use SkyBundle\Service\StarService;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
@@ -18,18 +20,28 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
  */
 class StarController extends FOSRestController
 {
-    /**
-     * @var StarService
-     */
-    private $starService = null;
-
     private function getStarService(): StarService
     {
-        if (null === $this->starService) {
-            $this->starService = $this->get('sky.star_service');
+        return $this->get('sky.star_service');
+    }
+
+    /**
+     * @Rest\Get("/unique-stars")
+     * @Sensio\ParamConverter("request", converter="request_query_param_converter")
+     *
+     * @param UniqueStarsRequest $request
+     * @param ConstraintViolationListInterface $constraintViolationList
+     * @return View
+     */
+    public function getUniqueStars(
+        UniqueStarsRequest $request,
+        ConstraintViolationListInterface $constraintViolationList
+    ): View {
+        if ($constraintViolationList->count() > 0) {
+            return View::create($constraintViolationList, Response::HTTP_BAD_REQUEST);
         }
 
-        return $this->starService;
+        return View::create($this->getStarService()->getUniqueStars($request), Response::HTTP_OK);
     }
 
     /**

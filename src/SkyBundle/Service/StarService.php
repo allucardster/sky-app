@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManager;
 use InvalidArgumentException;
 use SkyBundle\Entity\Star;
 use SkyBundle\Model\Request\CreateStarRequestInterface;
+use SkyBundle\Model\Request\UniqueStarsRequestInterface;
 use SkyBundle\Model\Request\UpdateStarRequestInterface;
 use SkyBundle\Repository\StarRepository;
 
@@ -96,5 +97,10 @@ class StarService
     {
         $this->em->remove($star);
         $this->em->flush();
+    }
+
+    public function getUniqueStars(UniqueStarsRequestInterface $request): array
+    {
+        return $this->starRepository->getUniqueStars($request);
     }
 }
