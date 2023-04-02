@@ -9,3 +9,9 @@ services:
     autowire: true
     tags:
       - { name: serializer.normalizer }
+
+  api.param_converter.request_query_param_converter:
+    class: ApiBundle\Request\ParamConverter\RequestQueryParamConverter
+    arguments: ['@fos_rest.serializer', '@validator', 'constraintViolationList']
+    tags:
+      - { name: request.param_converter, converter: request_query_param_converter }
