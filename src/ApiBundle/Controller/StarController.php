@@ -5,6 +5,7 @@ namespace ApiBundle\Controller;
 use ApiBundle\Model\Request\CreateStarRequest;
 use ApiBundle\Model\Request\UniqueStarsRequest;
 use ApiBundle\Model\Request\UpdateStarRequest;
+use FOS\RestBundle\Context\Context;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
@@ -41,7 +42,13 @@ class StarController extends FOSRestController
             return View::create($constraintViolationList, Response::HTTP_BAD_REQUEST);
         }
 
-        return View::create($this->getStarService()->getUniqueStars($request), Response::HTTP_OK);
+        $context = new Context();
+        $context->setAttribute('viewType', $request->getViewType());
+
+        $view = View::create($this->getStarService()->getUniqueStars($request), Response::HTTP_OK);
+        $view->setContext($context);
+
+        return $view;
     }
 
     /**

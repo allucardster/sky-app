@@ -1,0 +1,18 @@
+services:
+  api.serializer.constraint_violation_normalizer:
+    class: ApiBundle\Serializer\ConstraintViolationNormalizer
+    tags:
+      - { name: serializer.normalizer }
+
+  api.serializer.default_star_normalizer:
+    class: ApiBundle\Serializer\DefaultStarNormalizer
+    autowire: true
+    tags:
+      - { name: serializer.normalizer, priority: 0 }
+
+  api.serializer.star_basic_normalizer:
+    class: ApiBundle\Serializer\StarBasicNormalizer
+    autowire: true
+    tags:
+      - { name: serializer.normalizer }
+      - { name: serializer.view_type.normalizer }

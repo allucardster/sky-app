@@ -1,17 +1,12 @@
+imports:
+  - { resource: normalizers.yml }
+
 services:
-  api.serializer.constraint_violation_normalizer:
-    class: ApiBundle\Serializer\ConstraintViolationNormalizer
-    tags:
-      - { name: serializer.normalizer }
-
-  api.serializer.star_normalizer:
-    class: ApiBundle\Serializer\StarNormalizer
-    autowire: true
-    tags:
-      - { name: serializer.normalizer }
-
   api.param_converter.request_query_param_converter:
     class: ApiBundle\Request\ParamConverter\RequestQueryParamConverter
     arguments: ['@fos_rest.serializer', '@validator', 'constraintViolationList']
     tags:
       - { name: request.param_converter, converter: request_query_param_converter }
+
+  api.view_type_normalizer_finder:
+    class: ApiBundle\Service\ViewTypeNormalizerFinder

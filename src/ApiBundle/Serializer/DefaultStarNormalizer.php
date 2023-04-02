@@ -2,22 +2,33 @@
 
 namespace ApiBundle\Serializer;
 
+use ApiBundle\Service\ViewTypeNormalizerFinder;
 use SkyBundle\Entity\Star;
 use SkyBundle\Model\Element;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
-class StarNormalizer implements NormalizerInterface
+class DefaultStarNormalizer implements NormalizerInterface
 {
     private $normalizer;
 
-    public function __construct(ObjectNormalizer $normalizer)
+    private $viewTypeNormalizerFinder;
+
+    public function __construct(ObjectNormalizer $normalizer, ViewTypeNormalizerFinder $viewTypeNormalizerFinder)
     {
         $this->normalizer = $normalizer;
+        $this->viewTypeNormalizerFinder = $viewTypeNormalizerFinder;
     }
 
     public function normalize($object, $format = null, array $context = array())
     {
+        $viewType = $context['viewType'] ?? null;
+        $viewTypeNormalizer = $viewType ? $this->viewTypeNormalizerFinder->getNormalizerByViewType($viewType) : null;
+
+        if (null !== $viewTypeNormalizer) {
+            return $viewTypeNormalizer->normalize($object, $format, $context);
+        }
+
         $data = $this->normalizer->normalize($object, $format, $context);
 
         if (empty($data) || empty($data['atoms'])) {
