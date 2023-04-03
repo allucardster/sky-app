@@ -25,15 +25,13 @@ class StarRepository extends EntityRepository
                 Join::WITH,
                 $qb->expr()->andX(
                     'ts2.galaxy = :galaxy_not_found_in',
-                    'JSON_LENGTH(ts.atoms) = JSON_LENGTH(ts2.atoms)',
-                    'JSON_CONTAINS(ts.atoms, ts2.atoms) = 1'
+                    'JSON_OVERLAPS(ts.atoms, ts2.atoms) = 1'
                 )
             )
             ->where($qb->expr()->andX(
                 $qb->expr()->isNull('ts2.id'),
                 'ts.galaxy = :galaxy_found_in',
-                'JSON_CONTAINS(:atoms, ts.atoms) = 1',
-                'JSON_LENGTH(:atoms) = JSON_LENGTH(ts.atoms)'
+                'JSON_CONTAINS(ts.atoms, :atoms) = 1'
             ))
             ->addGroupBy('ts.id')
             ->setParameter('galaxy_not_found_in', $request->getNotFoundIn())

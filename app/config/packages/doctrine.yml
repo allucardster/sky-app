@@ -21,5 +21,6 @@ doctrine:
     auto_mapping: true
     dql:
       string_functions:
-        JSON_LENGTH: Scienta\DoctrineJsonFunctions\Query\AST\Functions\Mysql\JsonLength
         JSON_CONTAINS: Scienta\DoctrineJsonFunctions\Query\AST\Functions\Mysql\JsonContains
+        JSON_LENGTH: Scienta\DoctrineJsonFunctions\Query\AST\Functions\Mysql\JsonLength
+        JSON_OVERLAPS: Scienta\DoctrineJsonFunctions\Query\AST\Functions\Mysql\JsonOverlaps
