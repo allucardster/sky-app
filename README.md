@@ -19,7 +19,7 @@ Setup
 =====
 - Init docker containers
 ```shell
-docker compose up -d #or docker-compose up -d
+docker compose up -d #or docker compose up -d
 ```
 - Initialize the application (install vendors and initialize database with random data)
 ```shell
