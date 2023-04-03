@@ -67,7 +67,7 @@ class UpdateStarRequest implements UpdateStarRequestInterface
         return $this->radius;
     }
 
-    public function setRadius(?float $radius): void
+    public function setRadius($radius): void
     {
         $this->radius = $radius;
     }
@@ -77,7 +77,7 @@ class UpdateStarRequest implements UpdateStarRequestInterface
         return $this->temperature;
     }
 
-    public function setTemperature(?float $temperature): void
+    public function setTemperature($temperature): void
     {
         $this->temperature = $temperature;
     }
@@ -87,7 +87,7 @@ class UpdateStarRequest implements UpdateStarRequestInterface
         return $this->rotationFrequency;
     }
 
-    public function setRotationFrequency(?float $rotationFrequency): void
+    public function setRotationFrequency($rotationFrequency): void
     {
         $this->rotationFrequency = $rotationFrequency;
     }
