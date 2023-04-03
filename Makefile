@@ -16,5 +16,5 @@ database-load-fixtures: ## load database fixtures
 fix-file-permissions: ## Setup and fixing file permissions for directories that require writable both by the web server and the command line user
 	docker exec -it sky-php sh -c "chmod +x scripts/fix_perms.sh && scripts/fix_perms.sh"
 database-init: database-drop database-create database-create-schema database-load-fixtures ## Initialize database
-init-app: composer-install fix-file-permissions database-init ## Initialize the app
+init-app: fix-file-permissions database-init ## Initialize the app
 

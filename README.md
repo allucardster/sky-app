@@ -21,7 +21,14 @@ Setup
 ```shell
 docker compose up -d #or docker-compose up -d
 ```
-- Initialize the application (install vendors and initialize database with random data)
+- Install vendors
+```shell
+## Using make
+make composer-install
+## In case you don't have make installed
+docker exec -it sky-php sh -c "composer install --no-interaction"
+```
+- Initialize the application (fix directory permisions and initialize database with random data)
 ```shell
 ## Using make
 make init-app
