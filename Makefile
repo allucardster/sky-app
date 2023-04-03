@@ -4,7 +4,7 @@ help: ## show this help
 	@echo 'targets:'
 	@egrep '^(.+)\:\ .*##\ (.+)' ${MAKEFILE_LIST} | sed 's/:.*##/#/' | column -t -c 2 -s '#'
 composer-install: ## execute composer install
-	docker exec -it sky-php sh -c "composer install"
+	docker exec -it sky-php sh -c "composer install --no-interaction"
 database-drop: ## drop database through doctrine
 	docker exec -it sky-php sh -c "./app/console doctrine:database:drop --if-exists --force"
 database-create: ## create database through doctrine

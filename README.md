@@ -5,7 +5,7 @@ Requirements
 ============
 - Docker (>= 20.x)
 - Docker Compose (>= 2.x)
-- Make
+- Make (optional)
 
 Technology Stack
 ================
@@ -23,7 +23,10 @@ docker compose up -d #or docker-compose up -d
 ```
 - Initialize the application (install vendors and initialize database with random data)
 ```shell
+## Using make
 make init-app
+## In case you don't have make installed
+docker exec -it sky-php sh -c "chmod +x scripts/init_app.sh && scripts/init_app.sh"
 ```
 - In a web browser open the following url:
 ```shell
