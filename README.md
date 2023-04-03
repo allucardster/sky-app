@@ -25,6 +25,11 @@ docker compose up -d #or docker-compose up -d
 ```shell
 make init-app
 ```
+- In a web browser open the following url:
+```shell
+http://localhost:8081/app_dev.php/api/doc
+```
+- Enjoy!
 
 Contributors
 ============
