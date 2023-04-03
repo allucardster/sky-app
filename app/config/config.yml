@@ -5,6 +5,7 @@ imports:
     - { resource: packages/doctrine.yml }
     - { resource: packages/fos_rest.yml }
     - { resource: packages/framework.yml }
+    - { resource: packages/nelmio_api_doc.yml }
     - { resource: packages/sensio_framework_extra.yml }
     - { resource: packages/swiftmailer.yml }
     - { resource: packages/twig.yml }
